@@ -5,7 +5,8 @@ import version from '../../version';
 import StandardUserInterface from 'terriajs/lib/ReactViews/StandardUserInterface/StandardUserInterface.jsx';
 import MenuItem from 'terriajs/lib/ReactViews/StandardUserInterface/customizable/MenuItem';
 import RelatedMaps from './RelatedMaps';
-import { Menu, ExperimentalMenu } from 'terriajs/lib/ReactViews/StandardUserInterface/customizable/Groups';
+import { Menu, Nav, ExperimentalMenu } from 'terriajs/lib/ReactViews/StandardUserInterface/customizable/Groups';
+import MeasureTool from 'terriajs/lib/ReactViews/Map/Navigation/MeasureTool';
 import SplitPoint from 'terriajs/lib/ReactViews/SplitPoint';
 
 import './global.scss';
@@ -28,6 +29,9 @@ export default function UserInterface(props) {
                 <RelatedMaps viewState={props.viewState} />
                 <MenuItem caption="About" href="about.html" key="about-link"/>
             </Menu>
+	        <Nav>
+		        <MeasureTool terria={props.viewState.terria} key="measure-tool"/>
+	        </Nav>
             <ExperimentalMenu>
                 <If condition={isBrowserSupportedAV()}>
                     <SplitPoint loadComponent={loadAugmentedVirtuality} viewState={props.viewState} terria={props.viewState.terria} experimentalWarning={true}/>
